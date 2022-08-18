@@ -61,10 +61,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
             if (BluetoothGatt.GATT_SUCCESS == status) {
-                Log.e("GATT", "Connected");
+                Log.d("GATT", "Connected");
                 gatt.discoverServices();
             } else {
-                Log.e("GATT", "Status :" + status);
+                Log.d("GATT", "Status :" + status);
                 gatt.close();
                 connect();
             }
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onServicesDiscovered(BluetoothGatt gatt, int status) {
-            Log.e("GATT", "msg :" + status);
+            Log.d("GATT", "msg :" + status);
             sendmsg(gatt , "10");
         }
 
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             byte[] byteArrray = msg.getBytes();
             characteristic.setValue(byteArrray);
             boolean stat = gatt.writeCharacteristic(characteristic);
-            Log.e("GATT", "Send :" + stat);
+            Log.d("GATT", "Send :" + stat);
         }
 
 
